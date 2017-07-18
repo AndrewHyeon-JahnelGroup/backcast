@@ -52,7 +52,7 @@ window.fakeVideoData = [
       description: 'Rock on with JavaScript remixes of today\'s top songs',
       thumbnails: {
         default: {
-          url: 'http://3.bp.blogspot.com/-PTty3CfTGnA/TpZOEjTQ_WI/AAAAAAAAAeo/KeKt_D5X2xo/s1600/js.jpg',
+          url: 'https://3.bp.blogspot.com/-PTty3CfTGnA/TpZOEjTQ_WI/AAAAAAAAAeo/KeKt_D5X2xo/s1600/js.jpg',
         }
       }
     }
