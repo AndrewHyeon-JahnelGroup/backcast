@@ -2,21 +2,41 @@ var AppView = Backbone.View.extend({
 
   el: '#app',
 
-  initialize: function(data) {
+  initialize: function() {
+    this.videos = new Videos();
+
+
+    this.videos.search('');
+    this.listenTo(this.videos, 'sync', this.selectFirst);
     this.render();
-    this.videos = new Videos(data);
-    console.log(this.videos);
-    this.videoPlayerView = new VideoPlayerView();
-    this.videoListView = new VideoListView(this.videos);
-    // this.searchView = new SearchView();
-    // this.searchView.render();
-    this.on('change', this.render, this);
-      
   },
 
 
+  selectFirst: function() {
+    if (this.videos.length > 0) {
+      this.videos.at(0).select();
+    }
+  },
+  
   render: function() {
     this.$el.html(this.template());
+
+    new SearchView({
+      collection: this.videos,
+      el: this.$('.search')
+    }).render();
+
+    new VideoListView({
+      collection: this.videos,
+      el: this.$('.list')
+    }).render();
+
+    new VideoPlayerView({
+      model: this.videos.at(0),
+      collection: this.videos,
+      el: this.$('.player')
+    }).render();
+    
     return this;
   },
 
