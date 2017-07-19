@@ -1,5 +1,6 @@
 var Videos = Backbone.Collection.extend({
-
+//Creates a collection of Videos
+//Video model is created in models/video.js
   model: Video,
 
   url: 'https://www.googleapis.com/youtube/v3/search',
